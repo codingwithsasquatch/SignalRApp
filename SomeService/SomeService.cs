@@ -24,7 +24,10 @@ namespace SomeService
         /// <returns>A collection of listeners.</returns>
         protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
         {
-            return new ServiceInstanceListener[0];
+            return new[]
+            {
+                new ServiceInstanceListener(parameters => new OwinCommunicationListener("", new Startup(),  parameters))
+            };
         }
 
         /// <summary>
